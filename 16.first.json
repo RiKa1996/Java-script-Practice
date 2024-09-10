@@ -1,0 +1,17 @@
+{
+    "Name": "Rishav Kumar",
+    "Marks": 70.6,
+    "isAdmin": false,
+    "Attendence": null,
+    "Books": ["history", "english", "math", "economic","Science"],
+    "myObjectTeacher": {
+        "Name": "Pappi Singh Meena",
+        "Age": 45,
+        "Subject": "Science",
+        "Books2": ["german", "honest", {"writer": "dhanilal"}]
+    }
+}
+
+
+
+// parsed["myObjectTeacher"]["Books2"][2]["writer"]

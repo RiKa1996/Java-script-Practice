@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>indexedDB</title>
+</head>
+<body>
+    <h1>This is IndexedDB</h1>
+</body>
+<script>
+    
+    let openRequest = indexedDB.open("collegeDB",2);
+    //console.log(openRequest);
+    openRequest.onsuccess  = (e) => {
+        console.log("from success");
+        let db = openRequest.result;
+        let transaction = db.transaction("students", "readwrite");
+        let storeObject = transaction.objectStore("students");
+
+        //request bheja ja rha hai storeObject ko
+        // INSERT DATA INTO INDEXED DB
+        // let request = storeObject.put({             //add and put data ko write krne ke liye hai.
+        //     id:4,
+        //     name: 'sweta',
+        //     email: 'sweta@gmail.com'
+        // })
+
+        
+        //DATA KO GET KRRNE KE LIYE
+        //let index = storeObject.index("name");
+        //let request = storeObject.getAll(IDBKeyRange.bound(2,3));       //get--getAll(IDBKeyRange.bound(2,3))--getAllKeys()--getKey(2)
+        //let request = index.get('Rishuu');
+        
+        //DATA DELETE KRNE KE LIYE
+        //let request = storeObject.delete(3);
+        
+        //CURSOR SE DATA KO GET KRNA
+        let request = storeObject.openCursor()
+
+        request.onsuccess = (e) =>{
+            let cursor = request.result;
+            console.log("iteration")        //this is issue of cursor, ye bde data ke me issue krta hai.
+            if(cursor){
+                let {key, value} = cursor;
+                console.log(key, value);
+                cursor.continue();
+            }
+        }
+        
+        // request.onsuccess = (e) =>{          //ye alag hai , cursor me nhi hai.
+        //     console.log(e.target.result)
+        // }
+
+        request.onerror = (e) =>{
+            console.log(e)
+        }
+    }
+
+    openRequest.onupgradeneeded = (e) =>{
+        console.log("upgrade needed");
+        let db = openRequest.result;        //result asign ho gya
+        if(!db.objectStoreNames.contains("students")){
+            let request = db.createObjectStore("students", {keyPath: "id"});         //yha tak humara table ban gya hai.
+            request.createIndex("name", "name", {unique:false});
+            request.createIndex("email", "email", {unique:true});
+
+        }
+
+    }
+
+    openRequest.onerror = (e) =>{
+        console.log("Error:", e.target.error);
+    }
+</script>
+</html>

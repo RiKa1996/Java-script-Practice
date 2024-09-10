@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing Image</h2>
+    <ul id="images">
+        <li><img width="200px" id="sun" src="https://www.verywellhealth.com/thmb/fsAp7glEdINOuZtreCg4mKP4BzA=/2000x1418/filters:fill(87E3EF,1)/GettyImages-308783-003-e6958f3f1e50487c93b25596348056cd.jpg" alt="photoshop"></li>
+        <li><img width="200px" id="mind" src="https://theodc.net/wp-content/uploads/2018/10/magnetic-resonance-image-MRI-of-the-brain.jpg" alt=""></li>
+        <li><img width="200px" id="doctor" src="https://tse3.mm.bing.net/th?id=OIP.dnRPPCsNjax-syfuAGAvoAHaE8&pid=Api&P=0&h=180" alt=""></li>
+        <li><img width="200px" id="magic" src="https://tse3.mm.bing.net/th?id=OIP.c-mT4J1HP3pYtgx7pD_ofwHaEo&pid=Api&P=0&h=180" alt="" ></li> <!-- onclick="alert('MAGIC')" -->
+        <li><img width="200px" id="ultrasound" src="https://www.verywellhealth.com/thmb/fsAp7glEdINOuZtreCg4mKP4BzA=/2000x1418/filters:fill(87E3EF,1)/GettyImages-308783-003-e6958f3f1e50487c93b25596348056cd.jpghttps://www.universityofcalifornia.edu/sites/default/files/medical-imaging.jpg" alt=""></li>
+        <li><img width="200px" id="man" src="https://www.planetware.com/wpimages/2019/09/top-places-to-visit-in-the-world-manhattan-new-york.jpg" alt=""></li>
+        <li><img width="200px" id="taj" src="https://tse2.mm.bing.net/th?id=OIP.wDWVKhq33P1c_xbqyWrBAgHaFj&pid=Api&P=0&h=180" alt=""></li>
+        <li><img width="200px" id="paris" src="http://media.cntraveler.com/photos/598339c9b7a86962e8e27c5d/master/pass/Paris_GettyImages-601763009.jpg" alt=""></li>
+        <li><img width="200px" id="park" src="https://getwallpapers.com/wallpaper/full/f/8/4/1085365-popular-world-beautiful-places-wallpapers-1920x1080-laptop.jpg" alt=""></li>
+        <li><img width="200px" id="hand" src="https://tse1.mm.bing.net/th?id=OIP.O_s4r36VI93FH5dGj3Tj4wHaEK&pid=Api&P=0&h=180" alt=""></li>
+        <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+    </ul>
+    
+</body>
+<script>
+    //This is oldest approach
+    // document.getElementById('magic').onclick = function(){
+    //     alert("magic clicked");
+    // }
+
+    // attachEvent()  ---------ye phle huwa krte the
+    // jQuery --- on
+
+    //This is new approach which it is going on market(best approach)
+    // document.getElementById('magic').addEventListener('click', function(e){              
+    //     //alert("magic clicked again")
+    //     console.log(e);
+    // },false)        //false bhi likha jata hai------false default event hota hai.
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("Clicked inside the Ul")
+    }, false)
+
+    document.getElementById('paris').addEventListener('click', function(e){
+        console.log("Clicked paris...")
+        e.stopPropagation()                 //This is stopPropagation() method -ye control krta hai sbko click krne se 
+    }, false)
+
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault()
+        e.stopPropagation()
+        console.log("Google Clicked");
+    }, false)
+
+
+    // THIS IS OUR SOME PRACTICLE QUESTION
+    document.querySelector('#images').addEventListener('click', function(e){
+        //target aur uska parent lane ke liye
+        //console.log(e.target.parentNode);      //parentNode humne banaya hai.
+        //sirf img ko remove krna chahte hai
+        console.log(e.target.tagName);           //tagName humne banaya hai.
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove();
+        }
+
+
+        //target remove krne ke liye
+        // let removeIt = e.target.parentNode
+        // removeIt.remove();
+
+        // second tarika remove krne ka
+        //removeIt.parentNode.removeChild(removeIt)
+        console.log("Target Removed")
+    }, false)
+</script>
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detecting_browser</title>
+</head>
+<body>
+    <h1>Detecting Browser</h1>
+</body>
+<script>
+    //document.write(navigator.userAgent);        //Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36
+    var ba = ["Crome", "Firefox", "Safari", "Opera", "MISIE", "Trident", "Edge"];       //Section 66.2: User Agent Detection
+    var b, ua = navigator.userAgent;
+    for (var i = 0; i < ba.length; i++) {
+        if (ua.indexOf(ba[i]) > -1){
+            b = ba[i];
+            break;
+        }
+        
+    }
+    if(b == "MISIE" || b == "Trident" || b == "Edge"){          //Section 66.3: Library Method      //Section 66.1: Feature Detection Method
+        b == "Internet Explorer"
+    }
+
+    alert("You are using " + b + " Browser")
+</script>
+</html>

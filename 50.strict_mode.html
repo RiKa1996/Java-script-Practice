@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>strict_mode</title>
+</head>
+<body>
+    <h1>Rishav Kumar</h1>
+</body>
+<script>
+    "use strict"
+    //a = 10;               //because yha humne koi let, var, const nhi liya hai isliye ye hume error bata deta hai
+    //console.log(a);
+
+    function test(a, b, b){
+        console.log(a + b + b)
+    }
+    test(10,10,50)                  //SyntaxError: Duplicate parameter name not allowed in this context (at 50.strict_mode.html:16:25)Understand this error
+
+</script>
+</html>

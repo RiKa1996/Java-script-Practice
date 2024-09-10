@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anync_Project</title>
+</head>
+<body>
+    <h1>DEBATE with RISHAV</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayDate = function(str){
+        console.log(str, Date.now
+        
+        ())
+    }
+    // const intervaId = setInterval(sayDate,3000, "solved")
+    let intervalIdd;
+    const startChanging = function () {
+        if(!intervalIdd) {
+            intervalIdd = setInterval(sayDate,1000, "solved");
+        }
+    }
+    const stopChaging = function () {
+        clearInterval(intervalIdd);
+        intervalIdd = null;
+    }
+
+    document.querySelector('#start').
+    addEventListener("click",startChanging)
+
+    document.querySelector('#stop').
+    addEventListener("click",stopChaging)
+
+    // const randomColor = function (){
+    //     const hex = '0123456789ABCDEF';
+    //     let color = '#';
+    //     for(let i=0; i<6; i++){
+    //         color += hex[Math.floor(Math.random() * 16)];
+    //     }
+    //     return color;
+    // }
+    // let intervalId;
+    // const startChagingColor = function () {
+    //     if(!intervalId) {
+    //         intervalId = setInterval(changeBgColor,50);
+    //     }
+
+    //     function changeBgColor(){
+    //         document.body.style.background = randomColor();
+    //     }
+        
+    // }
+    // const stopChagingColor = function () {
+    //     clearInterval(intervalId);
+    //     intervalId = null;
+    // }
+
+    // document.querySelector("#start").
+    // addEventListener("click", startChagingColor);
+
+    // document.querySelector("#stop").
+    // addEventListener("click", stopChagingColor);
+    //console.log(randomColor);
+</script>
+</html>

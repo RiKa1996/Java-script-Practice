@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>geolocation</title>
+</head>
+<body>
+    <h1>This is GeoLocation</h1>
+    
+</body>
+<script>                    //Section 71.2: Get a user's latitude and longitude
+    const geolocationSuccess = (position) =>{
+        console.log(position);
+    }
+
+    const geolocationFailure = (failure) =>{
+        console.error(failure)
+    }
+
+    //navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationFailure)
+    //const watchId = navigator.geolocation.watchPosition(geolocationSuccess, geolocationFailure)
+    navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationFailure,{
+        enableHighAccuracy: true,
+        timeout: 5000
+    })
+
+
+    //navigator.geolocation.clearWatch(watchId);             //isse location clear ho jati hai
+</script>
+</html>

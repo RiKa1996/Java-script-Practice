@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: auto;
+}
+
+#frame{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dot{
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 69%;
+   /*  transition: 1s; */
+}
+
+.dot:nth-child(n){
+    background-color: blue;
+}
+.dot:nth-child(2n){
+    background-color: rgb(84, 137, 5);
+}
+.dot:nth-child(3n){
+    background-color: green;
+}
+.dot:nth-child(4n){
+    background-color: rgb(187, 8, 187);
+}
+.dot:nth-child(5n){
+    background-color: red;
+}
